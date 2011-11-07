@@ -1,0 +1,65 @@
+body {
+	background: url('grunge2.jpg');
+	color: #222;
+	font-family: Artifika;
+	font-size: 18px;
+	line-height: 170%;
+}
+
+a:link {color:#289BD0}
+a:visited {color:#0C548D}
+
+
+h1 {
+	font-size: 60px; 
+	font-weight: normal;
+	text-align:center; 
+	font-family: Copse;
+	text-shadow: 1px 1px 0 #000, 1px 1px 0px #ccc;
+}
+code, pre {
+	color: #F3DAB2;
+}
+
+code {
+	background: rgba(0,0,0,.7);
+	padding: 1px 3px;
+}
+
+pre {
+	background: rgba(0,0,0,.8);
+	padding: 1em;
+	border-radius: 1px;
+	box-shadow: 0 0 0 1px rgba(243,218,178,.3), 0 0 0 3px rgba(0,0,0,.8), 0 0 1px 4px rgba(255,255,255,.2), 0 0 1px 5px rgba(0,0,0,.2);
+}
+
+dl {
+	background: rgba(255,255,255,.5);
+	box-shadow: 0 0 1px rgba(0,0,0,.2);
+	padding: 1em;
+	margin: 1em;
+}
+
+dd {
+	margin-bottom: .5em;
+}
+
+#main {
+	width: 800px; max-width: 95%; 
+	margin: 0 auto;
+	text-align: center;
+}
+#bookmarklet {
+	background-color: #eee;
+	background: -webkit-linear-gradient(top, #fff, #ccc);
+	background: -moz-linear-gradient(top, #fff, #ccc);
+	box-shadow: 0 0 1px rgba(0,0,0,.2);
+	color: #222;
+	padding: .2em 1em;
+	border-radius: 15px;
+	text-decoration: none;
+	display: inline-block;
+	margin: 1em auto;
+}
+.footnote {font-size: .7em}
+#main.info {text-align: left}

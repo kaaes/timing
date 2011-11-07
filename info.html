@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Navigation Timing API</title>
+  <link href="http://fonts.googleapis.com/css?family=Copse|Artifika&subset=latin" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="main" class="info">
+      <h1>performance.timing object</h1>
+      <p>
+        This object stores the info of various events' timing that happen during the webpage loading.
+        The properties of it<a href="#disc">*</a> can be found below.
+      </p>
+      <p>
+        NOTE: This is simplified version based on <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html#sec-navigation-timing-interface">W3C Navigation Timing spec</a>.
+      </p>
+      <dl>
+        <dt><code>navigationStart</code></dt>
+        <dd>The time when load/unload action was triggered which could be also a prompt to unload current document (i.e. enter was hit on url bar, page was refreshed, submit button clicked etc.). If there is no previous document it has the same value as <code>fetchStart</code></dd> 
+        <dt><code>redirectStart</code></dt>
+        <dd>It can be either the start time of redirect (if such is present) or zero</dd>
+        <dt><code>redirectEnd</code></dt>
+        <dd>If redirect is present it stores the time when last byte of the response of last redirect was received. Zero otherwise.</dd>
+        <dt><code>fetchStart</code></dt>
+        <dd>The time just before browser starts doing anything with the request. It's when the actual request starts.</dd>
+        <dt><code>domainLookupStart</code></dt>
+        <dd>The moment just before browser checks DNS to resolve domain name. If DNS is not checked for any reason (e.g. the browser cache is used) it has the same value as <code>fetchStart</code></dd>
+        <dt><code>domainLookupEnd</code></dt>
+        <dd>The time after browser finishes domain lookup. If DNS wasn't checked it has the value of <code>fetchStart</code></dd>
+        <dt><code>connectStart</code></dt>
+        <dd>Time when browser starts connecting to the server. If resource is fetched from cache (or server is not contacted for any other reason like e.g. persistent connection) it has the same value as <code>domainLookupEnd</code></dd>
+        <dt><code>connectEnd</code></dt>
+        <dd>Time when browser finishes establishing connection with server. If no connection was made it has the <code>domainLookupEnd</code> value.</dd>
+        <dt><code>secureConnectionStart</code></dt>
+        <dd>Optional. If page is using HTTPS it's the time just before handshake for secure connection is initiated. <code>undefined</code> otherwise.</dd>
+        <dt><code>requestStart</code></dt>
+        <dd>The moment just before browser starts requesting the resource (from server or cache). It DOESN'T have matching end attribute.</dd>
+        <dt><code>unloadEventStart</code></dt>
+        <dd>If requested document comes from the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> as the previous one, the property stores the moment just before browser starts unloading the previous document. Zero otherwise.</dd>
+        <dt><code>unloadEventEnd</code></dt>
+        <dd>The time just after unloading of the previous document of the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> has finished, zero if no previous document or it has differen origin.</dd>
+        <dt><code>responseStart</code></dt>
+        <dd>Returns the time just after browser receives first byte of the response from server, cache or local resource.</dd>
+        <dt><code>responseEnd</code></dt>
+        <dd>The moment just after browser receives the last byte of the response.</dd>
+        <dt><code>domLoading</code></dt>
+        <dd>The moment just after the <code>document</code> object is created.</dd>
+        <dt><code>domInteractive</code></dt>
+        <dd>The moment just after the browser finished parsing the document including scripts inserted in "traditional" blocking way i.e. without <code>defer</code> or <code>async</code> attribute.</dd>
+        <dt><code>domContentLoadedEventStart</code></dt>
+        <dd>The time just before <code>DOMContentLoaded</code> event is fired that is just after browser has finished downloading and parsing all the scripts that were non-blocking i.e. had <code>defer</code> set and no <code>async</code> attribute.</dd>
+        <dt><code>domContentLoadedEventEnd</code></dt>
+        <dd>Moment just after <code>DOMContentLoaded</code> event completes.</dd>
+        <dt><code>domComplete</code></dt>
+        <dd>Returns the time just after browser finished downloading and parsing all <code>async</code> scripts.</dd>
+        <dt><code>loadEventStart</code></dt>
+        <dd>It returns the time just before <code>load</code> event is fired or zero if <code>load</code> hasn't been fired yet.</dd>
+        <dt><code>loadEventEnd</code></dt>
+        <dd>Returns the time just after <code>load</code> event has finished. Zero if <code>load</code> hasn't been fired yet.</dd>
+        <dt><code>*msFirstPaint*</code></dt>
+        <dd><a href="http://msdn.microsoft.com/en-us/library/ff974719">IE specific event</a> that stores the time when document began to be displayed. Zero if loading failed.</dd>
+      </dl>
+      <p id="disc">
+        *Technically these aren't the properties of the object itself but its prototype (although they're incorrectly implemented in Chrome for now). </p>
+        <p>It means that though you can access the data with good old <code>performance.timing.fetchStart</code>, you can't get all the keys with <code>Object.keys(performance.timing)</code> or use <code>Object.hasOwnProperty</code> method on it. Use <code>Object.keys(Object.getPrototypeOf(performance.timing)</code> instead.
+      </p>
+      <p>This won't however work on Chrome right now (<a href="https://bugs.webkit.org/show_bug.cgi?id=49739">bug is filed here</a> &ndash; thanks <a href="http://twitter.com/marcoos">@marcoos</a>), so just to be safe you can use this method to extract the keys of any <code>Performance</code> object (e.g. <code>performance.timing</code> or <code>performance.navigation</code>):</p>
+      <pre>
+function getPerfObjKeys(obj) {
+  var keys = Object.keys(obj);
+  return keys.length ? keys : Object.keys(Object.getPrototypeOf(obj));
+}      </pre>
+
+  <p>If you stumbled on this page by accident here the <a href=".">project that it's connected with</a>.</p>
+    </div>
+  </body>
+</html>
