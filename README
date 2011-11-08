@@ -1,7 +1,7 @@
 Breaking Down onLoad
 ====================
 
-This script has a form of bookmarklet and uses [Navigation Timing object](https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html) to present timing of different phases of loading the web page. 
+This script has a form of bookmarklet and uses [Navigation Timing object](https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html) to present timing of different phases of loading the page by a browser. It measures everything from triggering the action (hitting enter on url bar, refreshing page or clicking a link/button) to the moment when site is fully loaded.
 
 It is a visual presentation of the content of `performance.timing`  object.
 
