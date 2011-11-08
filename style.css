@@ -33,7 +33,7 @@ pre {
 	box-shadow: 0 0 0 1px rgba(243,218,178,.3), 0 0 0 3px rgba(0,0,0,.8), 0 0 1px 4px rgba(255,255,255,.2), 0 0 1px 5px rgba(0,0,0,.2);
 }
 
-dl {
+dl, #bm {
 	background: rgba(255,255,255,.5);
 	box-shadow: 0 0 1px rgba(0,0,0,.2);
 	padding: 1em;
@@ -47,7 +47,6 @@ dd {
 #main {
 	width: 800px; max-width: 95%; 
 	margin: 0 auto;
-	text-align: center;
 }
 #bookmarklet {
 	background-color: #eee;
@@ -61,5 +60,12 @@ dd {
 	display: inline-block;
 	margin: 1em auto;
 }
-.footnote {font-size: .7em}
-#main.info {text-align: left}
+.footnote {
+	font-size: .7em;
+}
+#bm {
+	text-align: center;
+}
+#bm p {
+	margin: .2em 0;
+}
