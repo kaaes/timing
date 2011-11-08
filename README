@@ -10,3 +10,8 @@ Adding it to your bookmarks allows you to analyze performance of every request y
 So far Navigation Timing API works in Firefox 7+, Chrome and IE 9+
 
 Check out how it works here - http://kaaes.github.com/timing/
+
+More resources:
+* [HTML5 Rocks - Measuring Page Load Speed with Navigation Timing](http://www.html5rocks.com/en/tutorials/webperformance/basics/)
+* [MSDN - performanceTiming Object](http://msdn.microsoft.com/en-us/library/ff975075)
+* [My description of performance.timing properties based on all of the above](info.html)
