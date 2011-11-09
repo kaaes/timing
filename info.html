@@ -63,7 +63,7 @@
       </dl>
       <p id="disc">
         *Technically these aren't the properties of the object itself but its prototype (although they're incorrectly implemented in Chrome for now). </p>
-        <p>It means that though you can access the data with good old <code>performance.timing.fetchStart</code>, you can't get all the keys with <code>Object.keys(performance.timing)</code> or use <code>Object.hasOwnProperty</code> method on it. Use <code>Object.keys(Object.getPrototypeOf(performance.timing)</code> instead.
+        <p>It means that though you can access the data with good old <code>performance.timing.fetchStart</code>, you can't get all the keys with <code>Object.keys(performance.timing)</code> or use <code>performance.timing.hasOwnProperty(fetchStart)</code> method on it. Use <code>Object.keys(Object.getPrototypeOf(performance.timing)</code> instead.
       </p>
       <p>This won't however work on Chrome right now (<a href="https://bugs.webkit.org/show_bug.cgi?id=49739">bug is filed here</a> &ndash; thanks <a href="http://twitter.com/marcoos">@marcoos</a>), so just to be safe you can use this method to extract the keys of any <code>Performance</code> object (e.g. <code>performance.timing</code> or <code>performance.navigation</code>):</p>
       <pre>
