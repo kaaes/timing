@@ -21,7 +21,7 @@
       <p>So far Navigation Timing API works in Firefox 7+, Chrome (buggy*) and IE 9+</p>
       <p>* According to <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html#sec-window.performance-attribute">W3C spec</a> <code>window.performance</code> should be implemented as <a href="http://www.w3.org/TR/WebIDL/#Replaceable">WebIDL Replaceable attribute</a>.<br />
       In human language it means that its properties are in fact not its own but its prototype. 
-      The consequence of that is that although you can access the values with <code>performance.timing</code>, 
+      The consequence of that is although you can access the values with <code>performance.timing</code>, 
       using any <code>Object</code> methods will not have the result you might expect:</p>
       <pre>
 performance.hasOwnProperty("timing");
