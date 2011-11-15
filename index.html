@@ -19,10 +19,10 @@
       <p>This script uses <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html">Navigation Timing object</a> to present timing of different phases of loading the page by a browser.</p>
       <p>It measures everything from triggering the action (hitting enter on url bar, refreshing page or clicking a link/button) to the moment when site is fully loaded. Adding it to your bookmarks allows you to analyze performance of every request you'd like to check out.</p>
       <p>So far Navigation Timing API works in Firefox 7+, Chrome* and IE 9+</p>
-      <p>According to <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html#sec-window.performance-attribute">W3C spec</a> <code>window.performance</code> should be implemented as <a href="http://www.w3.org/TR/WebIDL/#Replaceable">WebIDL Replaceable attribute</a>. 
-      In human language it means its properties are in fact not its properties but its prototype. 
+      <p>* According to <a href="https://dvcs.w3.org/hg/webperf/raw-file/tip/specs/NavigationTiming/Overview.html#sec-window.performance-attribute">W3C spec</a> <code>window.performance</code> should be implemented as <a href="http://www.w3.org/TR/WebIDL/#Replaceable">WebIDL Replaceable attribute</a>.</p>
+      <p>In human language it means its properties are in fact not its properties but its prototype. 
       The consequence of that is although you can access the values with <code>performance.timing</code>, 
-      using any <code>Object</code> methods will not result in expected result:</p>
+      using any <code>Object</code> methods will not have the result you might expect:</p>
       <pre>
 performance.hasOwnProperty("timing");
 // false
