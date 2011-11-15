@@ -33,11 +33,11 @@ pre {
 	box-shadow: 0 0 0 1px rgba(243,218,178,.3), 0 0 0 3px rgba(0,0,0,.8), 0 0 1px 4px rgba(255,255,255,.2), 0 0 1px 5px rgba(0,0,0,.2);
 }
 
-dl, #bm, #example {
+dl, .fig {
 	background: rgba(255,255,255,.5);
 	box-shadow: 0 0 1px rgba(0,0,0,.2);
 	padding: 1em;
-	margin: 1em;
+	margin: 1em 0;
 }
 
 dd {
@@ -63,16 +63,17 @@ dd {
 .footnote {
 	font-size: .7em;
 }
-#bm, #example {
+.fig {
 	text-align: center;
 }
 #bm p {
 	margin: 1em 0;
 	line-height: 1.1em;
 }
-#example img {
+#chart {
 	display: block;
-	padding: .5em 1.5em;
+	margin: 0 auto;
 	background:rgba(255,253,242,.95);
 	box-shadow: 0 0 1px rgba(0,0,0,.1);
+	max-width: 100%;
 }
