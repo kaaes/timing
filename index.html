@@ -24,11 +24,15 @@
       The consequence of that is although you can access the values with <code>performance.timing</code>, 
       using any <code>Object</code> methods will not result in expected result:</p>
       <pre>
-performance.hasOwnProperty("timing");                        // false
-Object.getPrototypeOf(performance).hasOwnProperty("timing"); // true
+performance.hasOwnProperty("timing");
+// false
+Object.getPrototypeOf(performance).hasOwnProperty("timing");
+// true
 
-Object.keys(performance);                            // []
-Object.keys(Object.getPrototypeOf(performance));     // ["timing", "navigation"]
+Object.keys(performance);
+// []
+Object.keys(Object.getPrototypeOf(performance));
+// ["timing", "navigation"]
 </pre>
       <p>More resources:</p>
       <ul>
