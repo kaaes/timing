@@ -62,9 +62,10 @@
 	
 	function createInfoLink() {
 		var a = document.createElement('a');
-		a.href = 'http://msdn.microsoft.com/en-us/library/ff975075';
+		a.href = 'http://kaaes.github.com/timing/info.html';
+		a.trget = '_blank';
 		a.innerHTML = 'What does it all mean?';
-		a.style.cssText = 'color:#1D85B8'
+		a.style.cssText = 'color:#1D85B8';
 		return a;
 	}
 
