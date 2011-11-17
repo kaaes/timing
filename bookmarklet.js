@@ -4,10 +4,10 @@
 		window.__profiler__();
 	} else {
 		var h= document.getElementsByTagName('head')[0], 
-			s = document.createElement('script');
+			s = document.createElement('script'),
+			d = new Date();;
 			s.type= 'text/javascript';
-		s.id='bmrklt';
-		s.src= 'http://kaaes.github.com/timing/timing.js';
+		s.src= 'http://kaaes.github.com/timing/timing.js?'+d.getTime();
 		h.appendChild(s);
 	}
 })()
