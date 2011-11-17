@@ -1,4 +1,4 @@
-var Profiler = (function() {
+__profiler__ = window.__profiler__ || function() {
 	var order = ['navigationStart', 'redirectStart', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 'msFirstPaint', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd'];
 	var sections = [{
 		name: 'network',
@@ -263,5 +263,8 @@ var Profiler = (function() {
 		container.appendChild(createHeader(container));		
 		container.appendChild(data ? createChart(container, data) : notSupportedInfo());
 	})();
-});
-Profiler();
+};
+if(typeof __profiler__ === 'function') { 
+	__profiler__.scriptLoaded = true;
+	__profiler__(); 
+}
