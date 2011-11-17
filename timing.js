@@ -40,7 +40,7 @@ __profiler__ = window.__profiler__ || function() {
 	function createContainer() {
 		var container = document.createElement('div');
 		document.body.appendChild(container);
-		container.style.cssText = 'font-size:14px;font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;text-align:left;width:95%;position:fixed;z-index:999;margin:0 auto;top:20px;left:20px;background:rgba(255,253,242,.95);padding:10px;box-shadow:0 0 10px 5px rgba(0,0,0,.5),0 0 0 10px rgba(0,0,0,.5); border-radius:1px';
+		container.style.cssText = 'font-size:14px;font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;text-align:left;width:95%;position:fixed;z-index:999;margin:0 auto;top:20px;left:20px;background:#FFFDF2;background:rgba(255,253,242,.95);padding:10px;box-shadow:0 0 10px 5px rgba(0,0,0,.5),0 0 0 10px rgba(0,0,0,.5); border-radius:1px';
 		return container;
 	}
 	
