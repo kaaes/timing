@@ -54,7 +54,10 @@ __profiler__ = window.__profiler__ || function() {
 		
 		b.innerHTML = 'close';
 		b.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;float:right;border:none;background:#333;color:#fff;border-radius:10px;padding:3px 10px;font-size:12px;';
-		b.addEventListener('click', function(e){container.parentNode.removeChild(container)});
+		b.onclick = function(e){
+			b.onclick = null;
+			container.parentNode.removeChild(container);
+		}; // DOM level 0 used to avoid implementing this twice for IE & the rest 
 		
 		c.appendChild(h);
 		c.appendChild(b);
