@@ -9,7 +9,7 @@
     <div id="main">
       <h1>Breaking Down onLoad</h1>
       <div id="bm" class="fig">
-      <a id="bookmarklet" href="javascript:(function(){var%20h=%20document.getElementsByTagName(%27head%27)[0],s%20=%20document.createElement(%27script%27);s.type=%20%27text/javascript%27;s.src=%20%27http://kaaes.github.com/timing/timing.js%27;h.appendChild(s);})()">Loadtime Breakdown</a>
+      <a id="bookmarklet" href="javascript:(function(){if(!document.getElementById(%27bmrklt%27))%20{var%20h=%20document.getElementsByTagName(%27head%27)[0],s%20=%20document.createElement(%27script%27);s.type=%20%27text/javascript%27;s.id=%27bmrklt%27;s.src=%20%27http://kaaes.github.com/timing/timing.js%27;h.appendChild(s);}%20else%20{Profiler();}})()">Loadtime Breakdown</a>
       
       <p>
         drag the button to bookmarks toolbar<br /> &darr; <br />click it on any page you want to check
