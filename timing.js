@@ -53,7 +53,7 @@ __profiler__ = window.__profiler__ || function() {
 		h.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;display:inline-block;color:#222;font-weight:normal;font-size:24px;margin:10px 0;line-height:100%;width:auto';
 		
 		b.innerHTML = 'close';
-		b.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;float:right;border:none;background:#333;color:#fff;border-radius:10px;padding:3px 10px;font-size:12px;line-height:100%;width:auto';
+		b.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;float:right;border:none;background:#333;color:#fff;border-radius:10px;padding:3px 10px;font-size:12px;line-height:130%;width:auto';
 		b.onclick = function(e){
 			b.onclick = null;
 			container.parentNode.removeChild(container);
