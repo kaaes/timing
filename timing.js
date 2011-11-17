@@ -1,23 +1,6 @@
 __profiler__ = window.__profiler__ || function() {
-	var order = ['navigationStart', 'redirectStart', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 'msFirstPaint', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd'];
-	var sections = [{
-		name: 'network',
-		color: [224, 84, 63],
-		start: order.indexOf('navigationStart'),
-		end: order.indexOf('connectEnd')
-	}, {
-		name: 'server',
-		color: [255, 188, 0],
-		start: order.indexOf('requestStart'),
-		end: order.indexOf('responseEnd')
-	}, {
-		name: 'browser',
-		color: [16, 173, 171],
-		start: order.indexOf('unloadEventStart'),
-		end: order.indexOf('loadEventEnd')
-	}];
-	
-	var maxTime = 0,
+	var order = ['navigationStart', 'redirectStart', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 'msFirstPaint', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd'],
+		maxTime = 0,
 		barHeight = 20,
 		timeLabelWidth = 50,
 		nameLabelWidth = 150,
@@ -33,6 +16,25 @@ __profiler__ = window.__profiler__ || function() {
 	
 	function setUnit(canvas) {
 		return (canvas.width - textSpace) / maxTime;
+	}
+	
+	function setSections() {
+		return Array.prototype.indexOf ? [{
+			name: 'network',
+			color: [224, 84, 63],
+			start: order.indexOf('navigationStart'),
+			end: order.indexOf('connectEnd')
+		}, {
+			name: 'server',
+			color: [255, 188, 0],
+			start: order.indexOf('requestStart'),
+			end: order.indexOf('responseEnd')
+		}, {
+			name: 'browser',
+			color: [16, 173, 171],
+			start: order.indexOf('unloadEventStart'),
+			end: order.indexOf('loadEventEnd')
+		}] : [];
 	}
 	
 	function createContainer() {
@@ -75,14 +77,14 @@ __profiler__ = window.__profiler__ || function() {
 		return p;
 	}
 
-	function createChart(container, data) {
+	function createChart(container, data, sections) {
 		var time, blockStart, blockEnd, item, eventName, options,
 			omit = [], drawFns = [], preDraw,
 			fontString = "12px Arial",
 			canvas, context,
 			canvasCont = document.createElement('div'),
 			infoLink = createInfoLink(),
-			dataObj = findSectionEdges(data);
+			dataObj = findSectionEdges(data, sections);
 		
 		canvas = document.createElement('canvas');
 		canvas.width = parseInt(window.getComputedStyle(container).width, 10) - 20;
@@ -126,7 +128,7 @@ __profiler__ = window.__profiler__ || function() {
 		return canvasCont;
 	}
 	
-	function findSectionEdges(dataArr) {
+	function findSectionEdges(dataArr, sections) {
 		var data = {}, start, end, i, j, len, flen, sectionOrder, filtered;
 		dataArr.forEach(function(el) {
 			data[el[0]] = { time : el[1] };
@@ -259,9 +261,10 @@ __profiler__ = window.__profiler__ || function() {
 	
 	(function show() {
 		var container = createContainer(),
-			data = getData();			
+			data = getData(),
+			sections = setSections();			
 		container.appendChild(createHeader(container));		
-		container.appendChild(data ? createChart(container, data) : notSupportedInfo());
+		container.appendChild(data && sections.length ? createChart(container, data, sections) : notSupportedInfo());
 	})();
 };
 if(typeof __profiler__ === 'function') { 
