@@ -1,4 +1,4 @@
-(function() {
+var Profiler = (function() {
 	var order = ['navigationStart', 'redirectStart', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd', 'msFirstPaint'];
 	var sections = [{
 		name: 'network',
@@ -263,4 +263,5 @@
 		container.appendChild(createHeader(container));		
 		container.appendChild(data ? createChart(container, data) : notSupportedInfo());
 	})();
-})();
+});
+Profiler();
