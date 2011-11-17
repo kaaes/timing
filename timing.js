@@ -270,7 +270,5 @@ __profiler__ = window.__profiler__ || function() {
 		container.appendChild(data && sections.length ? createChart(container, data, sections) : notSupportedInfo());
 	})();
 };
-if(typeof __profiler__ === 'function') { 
-	__profiler__.scriptLoaded = true;
-	__profiler__(); 
-}
+if(typeof __profiler__ === 'function') { __profiler__(); }
+__profiler__.scriptLoaded = true;
