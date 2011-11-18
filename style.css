@@ -39,7 +39,7 @@ dl, .fig {
 	background: rgba(255,255,255,.5);
 	box-shadow: 0 0 1px rgba(0,0,0,.2);
 	padding: 1em;
-	margin: 1em 0;
+	margin: 1em;
 }
 
 dd {
