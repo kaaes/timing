@@ -5,7 +5,7 @@
 			h=d.getElementsByTagName('head')[0], 
 			s=d.createElement('script'),
 			l=d.createElement('div'),
-			h=function(){d.body.removeChild(l)}
+			h=function(){d.body.removeChild(l)},
 			t=new Date();
 		s.type='text/javascript';
 		l.style.cssText='z-index:999;position:fixed;top:10px;left:10px;display:inline;width:auto;font-size:14px;line-height:1.5em;font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;padding:3px 10px 0;background:#FFFDF2;box-shadow:0 0 3px 10px rgba(0,0,0,.5),0 0 0 5px rgba(0,0,0,.5); border-radius:1px';
