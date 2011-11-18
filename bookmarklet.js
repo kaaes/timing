@@ -12,7 +12,7 @@
 		l.innerHTML='Just a moment';
 		s.src='http://chrisheilmann.s3.amazonaws.com/timing.js?'+t.getTime();
 		s.onload=c;
-		s.onreadystatechange=function(){if(this.readyState=='complete'){c();}};
+		s.onreadystatechange=function(){if(this.readyState=='loaded'){c()}};
 		d.body.appendChild(l);
 		h.appendChild(s);
 	} else if(typeof window.__profiler__ === 'function') {window.__profiler__();}
