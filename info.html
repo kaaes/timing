@@ -23,7 +23,8 @@
         <dt><code>redirectEnd</code></dt>
         <dd>If redirect is present it stores the time when last byte of the response of last redirect was received. Zero otherwise.</dd>
         <dt><code>fetchStart</code></dt>
-        <dd>The time just before browser starts doing anything with the request. It's when the actual request starts.</dd>
+        <dd>The time just before browser starts doing anything with the request. It's when the actual request starts. Between 
+        <code>fetchStart</code> and <code>domainLookupStart</code> browser checks its cache.</dd>
         <dt><code>domainLookupStart</code></dt>
         <dd>The moment just before browser checks DNS to resolve domain name. If DNS is not checked for any reason (e.g. the browser cache is used) it has the same value as <code>fetchStart</code></dd>
         <dt><code>domainLookupEnd</code></dt>

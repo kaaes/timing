@@ -1,5 +1,6 @@
-__profiler__ = window.__profiler__ || function() {
+var __profiler = window.__profiler || function() {
 	var order = ['navigationStart', 'redirectStart', 'redirectStart', 'redirectEnd', 'fetchStart', 'domainLookupStart', 'domainLookupEnd', 'connectStart', 'secureConnectionStart', 'connectEnd', 'requestStart', 'responseStart', 'responseEnd', 'unloadEventStart', 'unloadEventEnd', 'domLoading', 'domInteractive', 'msFirstPaint', 'domContentLoadedEventStart', 'domContentLoadedEventEnd', 'domContentLoaded', 'domComplete', 'loadEventStart', 'loadEventEnd'],
+		cssReset = 'font-size:14px;line-height:1em;z-index:999;text-align:left;font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;box-shadow:none;display:inline-block;color:#222;font-weight:normal;border:none;margin:0;padding:0;background:none;',
 		maxTime = 0,
 		barHeight = 20,
 		timeLabelWidth = 50,
@@ -40,20 +41,25 @@ __profiler__ = window.__profiler__ || function() {
 	function createContainer() {
 		var container = document.createElement('div');
 		document.body.appendChild(container);
-		container.style.cssText = 'font-size:14px;font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;text-align:left;width:95%;position:fixed;z-index:999;margin:0 auto;top:20px;left:20px;background:#FFFDF2;background:rgba(255,253,242,.95);padding:10px;box-shadow:0 0 10px 5px rgba(0,0,0,.5),0 0 0 10px rgba(0,0,0,.5); border-radius:1px';
+		container.style.cssText = cssReset + 'width:95%;position:fixed;margin:0 auto;top:20px;left:20px;background:#FFFDF2;background:rgba(255,253,242,.95);padding:10px;box-shadow:0 0 10px 5px rgba(0,0,0,.5),0 0 0 10px rgba(0,0,0,.5); border-radius:1px';
 		return container;
 	}
 	
-	function createHeader(container) {
+	function createHeader(container, sections) {
 		var c = document.createElement('div'),
 			h = document.createElement('h1'),
-			b = document.createElement('button');			
+			b = document.createElement('button'),
+			sectionStr = '/ ';
+		
+		for(var i = 0, l = sections.length; i < l; i++) {
+			sectionStr += '<span style="color:rgb('+sections[i].color.join(',')+')">'+sections[i].name+'</span> / ';
+		}				
 				
-		h.innerHTML = 'Page Load Time Breakdown';
-		h.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;display:inline-block;color:#222;font-weight:normal;font-size:24px;margin:10px 0;line-height:100%;width:auto';
+		h.innerHTML = 'Page Load Time Breakdown ' + sectionStr;
+		h.style.cssText = cssReset + 'font-size:24px;margin:10px 0;width:auto';
 		
 		b.innerHTML = 'close';
-		b.style.cssText = 'font-family:Helvetica,Calibri,Arial,sans-serif;text-shadow:none;float:right;border:none;background:#333;color:#fff;border-radius:10px;padding:3px 10px;font-size:12px;line-height:130%;width:auto';
+		b.style.cssText = cssReset + 'float:right;background:#333;color:#fff;border-radius:10px;padding:3px 10px;font-size:12px;line-height:130%;width:auto';
 		b.onclick = function(e){
 			b.onclick = null;
 			container.parentNode.removeChild(container);
@@ -70,7 +76,7 @@ __profiler__ = window.__profiler__ || function() {
 		a.href = 'http://kaaes.github.com/timing/info.html';
 		a.target = '_blank';
 		a.innerHTML = 'What does it all mean?';
-		a.style.cssText = 'color:#1D85B8';
+		a.style.cssText = cssReset + 'color:#1D85B8';
 		return a;
 	}
 
@@ -266,9 +272,9 @@ __profiler__ = window.__profiler__ || function() {
 		var container = createContainer(),
 			data = getData(),
 			sections = setSections();			
-		container.appendChild(createHeader(container));		
+		container.appendChild(createHeader(container, sections));		
 		container.appendChild(data && sections.length ? createChart(container, data, sections) : notSupportedInfo());
 	})();
 };
-if(typeof __profiler__ === 'function') { __profiler__(); }
-__profiler__.scriptLoaded = true;
+if(typeof __profiler === 'function') { __profiler(); }
+__profiler.scriptLoaded = true;
