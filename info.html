@@ -54,7 +54,7 @@
         <dt><code>domContentLoadedEventEnd</code></dt>
         <dd>Moment just after <code>DOMContentLoaded</code> event completes. This is when DOMready event in JS frameworks is fired.</dd>
         <dt><code>domComplete</code></dt>
-        <dd>Returns the time when there's nothing more that can delay load event of the document i.e. all images are loaded.</dd>
+        <dd>Returns the time when all static resources referenced from the DOM have been downloaded.  Async scripts and resources loaded using JavaScript may not have completed.</dd>
         <dt><code>loadEventStart</code></dt>
         <dd>It returns the time just before <code>load</code> event is fired or zero if <code>load</code> hasn't been fired yet.</dd>
         <dt><code>loadEventEnd</code></dt>
