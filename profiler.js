@@ -16,6 +16,7 @@ function __Profiler() {
   this.containerPadding = 20;
 
   this.container = null;
+  this.customElement = false;
 
   this.timingData = [];
   this.sections = [];
@@ -44,9 +45,10 @@ __Profiler.prototype.cssReset = 'font-size:12px;line-height:1em;z-index:99999;te
   'shadow:none;display:inline-block;color:#444;font-' +
   'weight:normal;border:none;margin:0;padding:0;background:none;';
 
-__Profiler.prototype.containerCss = 'position:fixed;margin:0 auto;top:' +
-  '0;left:0;right:0;background:#FFFDF2;background:rgba(255,253,242,.99);padding:20px' +
-  ';border-bottom:solid 1px #EFCEA1;box-shadow:0 2px 5px rgba(0,0,0,.1)';
+__Profiler.prototype.elementCss = 'position:fixed;margin:0 auto;top:' +
+  '0;left:0;right:0;border-bottom:solid 1px #EFCEA1;box-shadow:0 2px 5px rgba(0,0,0,.1);';
+
+__Profiler.prototype.containerCss = 'background:#FFFDF2;background:rgba(255,253,242,.99);padding:20px;display:block;';
 
 __Profiler.prototype.headerCss = 'font-size:16px;font-weight:normal;margin:0 0 1em 0;width:auto';
 
@@ -124,6 +126,10 @@ __Profiler.prototype._createContainer = function() {
   }; // DOM level 0 used to avoid implementing this twice for IE & the rest
   
   container.style.cssText = this.cssReset + this.containerCss;
+
+  if (!this.customElement) {
+    container.style.cssText += this.elementCss;
+  }
 
   header.appendChild(button);
   container.appendChild(header);
@@ -447,20 +453,16 @@ __Profiler.prototype._getData = function() {
 }
 
 /**
- * Build the overlay with the bar chart
- * @param {?HTMLElement} container If provided
- * the chart will be render in the container.
- * If not provided, container element will be created
- * and appended to the page
+ * Actually init the chart
  */
-__Profiler.prototype.init = function(container) {
+__Profiler.prototype._init = function() {
   this.timingData = this._getData();
-  this.sections = this._getSections(); 
+  this.sections = this._getSections();
+  this.container = this._createContainer();
 
-  if (container instanceof HTMLElement) {
-    this.container = container;
+  if (this.customElement) {
+    this.customElement.appendChild(this.container);
   } else {
-    this.container = this._createContainer();
     document.body.appendChild(this.container);
   }
 
@@ -474,4 +476,30 @@ __Profiler.prototype.init = function(container) {
   }
    
   this.container.appendChild(content);
+}
+
+/**
+ * Build the overlay with the timing chart
+ * @param {?HTMLElement} element If provided
+ * the chart will be render in the container.
+ * If not provided, container element will be created
+ * and appended to the page.
+ * @param {?Number} timeout Optional timeout to execute
+ * timing info. Can be used to catch all events.
+ * if not provided will be executed immediately.
+ */
+__Profiler.prototype.init = function(element, timeout) {
+
+  if (element instanceof HTMLElement) {
+    this.customElement = element;
+  }
+
+  if (timeout && parseInt(timeout, 10) > 0) {
+    var self = this;
+    setTimeout(function() {
+      self._init();
+    }, timeout);
+  } else {
+    this._init();
+  }
 }
