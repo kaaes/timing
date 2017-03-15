@@ -7,12 +7,12 @@ It is a visual presentation of the content of `performance.timing` object.
 
 Adding it to your bookmarks allows you to analyze performance of every request you'd like to check out.
 
-So far Navigation Timing API works in Firefox 7+, Chrome and IE 9+ 
+So far Navigation Timing API works in Firefox 7+, Chrome and IE 9+
 
-Check out how it works here - http://kaaes.github.com/timing/
+Check out how it works here - https://kaaes.github.com/timing/
 
 More resources:
 
-* [HTML5 Rocks - Measuring Page Load Speed with Navigation Timing](http://www.html5rocks.com/en/tutorials/webperformance/basics/)
-* [MSDN - performanceTiming Object](http://msdn.microsoft.com/en-us/library/ff975075)
+* [HTML5 Rocks - Measuring Page Load Speed with Navigation Timing](https://www.html5rocks.com/en/tutorials/webperformance/basics/)
+* [MSDN - performanceTiming Object](https://msdn.microsoft.com/en-us/library/ff975075)
 * [My description of performance.timing properties based on all of the above](info.html)
