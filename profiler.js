@@ -176,7 +176,7 @@ __Profiler.prototype._createCloseButton = function() {
  */
 __Profiler.prototype._createInfoLink = function() {
   var a = document.createElement('a');
-  a.href = 'http://kaaes.github.com/timing/info.html';
+  a.href = 'https://kaaes.github.com/timing/info.html';
   a.target = '_blank';
   a.innerHTML = 'What does that mean?';
   a.style.cssText = this.cssReset + this.infoLinkCss;

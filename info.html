@@ -2,7 +2,7 @@
 <html>
   <head>
   <title>Navigation Timing API</title>
-  <link href="http://fonts.googleapis.com/css?family=Copse|Artifika&subset=latin" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Copse|Artifika&subset=latin" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -38,9 +38,9 @@
         <dt><code>requestStart</code></dt>
         <dd>The moment just before browser starts requesting the resource (from server or cache). It DOESN'T have matching end attribute.</dd>
         <dt><code>unloadEventStart</code></dt>
-        <dd>If requested document comes from the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> as the previous one, the property stores the moment just before browser starts unloading the previous document. Zero otherwise.</dd>
+        <dd>If requested document comes from the <a href="https://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> as the previous one, the property stores the moment just before browser starts unloading the previous document. Zero otherwise.</dd>
         <dt><code>unloadEventEnd</code></dt>
-        <dd>The time just after unloading of the previous document of the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> has finished, zero if no previous document or it has differen origin.</dd>
+        <dd>The time just after unloading of the previous document of the <a href="https://en.wikipedia.org/wiki/Same_origin_policy">same origin</a> has finished, zero if no previous document or it has differen origin.</dd>
         <dt><code>responseStart</code></dt>
         <dd>Returns the time just after browser receives first byte of the response from server, cache or local resource.</dd>
         <dt><code>responseEnd</code></dt>
@@ -60,13 +60,13 @@
         <dt><code>loadEventEnd</code></dt>
         <dd>Returns the time just after <code>load</code> event has finished. Zero if <code>load</code> hasn't been fired yet.</dd>
         <dt><code>*msFirstPaint*</code></dt>
-        <dd><a href="http://msdn.microsoft.com/en-us/library/ff974719">IE specific event</a> that stores the time when document began to be displayed. Zero if loading failed.</dd>
+        <dd><a href="https://msdn.microsoft.com/en-us/library/ff974719">IE specific event</a> that stores the time when document began to be displayed. Zero if loading failed.</dd>
       </dl>
       <p id="disc">
         *Technically these aren't the properties of the object itself but its prototype (although they're incorrectly implemented in Chrome for now). </p>
         <p>It means that though you can access the data with good old <code>performance.timing.fetchStart</code>, you can't get all the keys with <code>Object.keys(performance.timing)</code> or use <code>performance.timing.hasOwnProperty(fetchStart)</code> method on it. Use <code>Object.keys(Object.getPrototypeOf(performance.timing)</code> instead.
       </p>
-      <p>This won't however work on Chrome right now (<a href="https://bugs.webkit.org/show_bug.cgi?id=49739">bug is filed here</a> &ndash; thanks <a href="http://twitter.com/marcoos">@marcoos</a>), so just to be safe you can use this method to extract the keys of any <code>Performance</code> object (e.g. <code>performance.timing</code> or <code>performance.navigation</code>):</p>
+      <p>This won't however work on Chrome right now (<a href="https://bugs.webkit.org/show_bug.cgi?id=49739">bug is filed here</a> &ndash; thanks <a href="https://twitter.com/marcoos">@marcoos</a>), so just to be safe you can use this method to extract the keys of any <code>Performance</code> object (e.g. <code>performance.timing</code> or <code>performance.navigation</code>):</p>
       <pre>
 function getPerfObjKeys(obj) {
   var keys = Object.keys(obj);
